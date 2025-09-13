@@ -4,8 +4,33 @@ import { Menu, X, Rocket } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  // Track active section based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'services', 'contact'];
+      const scrollY = window.scrollY + 100; // Offset for navbar height
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollY >= offsetTop && scrollY < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "#home", label: "Home" },
@@ -16,6 +41,7 @@ export default function Navbar() {
 
   return (
     <nav
+    id="home"
       className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 
       opacity-100 scale-100 w-full max-w-12xl`}
     >
@@ -43,23 +69,30 @@ export default function Navbar() {
           {/* Center: Nav links (centered on large screens) */}
           <div className="hidden lg:flex justify-center flex-1">
             <div className="flex gap-27 items-center">
-              {navLinks.map((link) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  className="relative font-medium text-base tracking-wide group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {/* text span: delayed color change so underline can appear first */}
-                  <span className="relative z-10 text-white transition-colors duration-300 delay-150 group-hover:text-primary-green">
-                    {link.label}
-                  </span>
-                  {/* underline: faster expand and explicit green so it appears immediately */}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#22c55e] group-hover:w-full transition-all duration-200 ease-out"></span>
-                  <span className="absolute inset-0 bg-primary-green/20 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></span>
-                </motion.a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.slice(1); // Remove # from href
+                return (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    className="relative font-medium text-base tracking-wide group"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {/* text span: with active state styling */}
+                    <span className={`relative z-10 transition-colors duration-300 delay-150 group-hover:text-primary-green ${
+                      isActive ? 'text-primary-green' : 'text-white'
+                    }`}>
+                      {link.label}
+                    </span>
+                    {/* underline: shows for active state and hover */}
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#22c55e] transition-all duration-200 ease-out ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
+                    <span className="absolute inset-0 bg-primary-green/20 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></span>
+                  </motion.a>
+                );
+              })}
             </div>
           </div>
   
@@ -100,16 +133,23 @@ export default function Navbar() {
             className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-brand-navy/95 backdrop-blur-md rounded-xl border border-brand-green-500/20 shadow-xl"
           >
             <div className="flex flex-col space-y-4 p-6">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-white hover:text-primary-green transition-colors duration-300 text-center py-2 font-medium tracking-wide"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.slice(1);
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`transition-colors duration-300 text-center py-2 font-medium tracking-wide ${
+                      isActive 
+                        ? 'text-primary-green' 
+                        : 'text-white hover:text-primary-green'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
               <button className="bg-gradient-to-r from-primary-green to-brand-green-400 text-brand-navy font-semibold px-6 py-3 rounded-full mt-4 hover:scale-105 transition-transform duration-300 tracking-wide">
                 Get Started
               </button>
