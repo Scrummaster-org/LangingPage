@@ -68,9 +68,9 @@ const Hero = () => {
         >
           {/* Badge */}
           <motion.div variants={itemVariants} className="inline-flex">
-            <div className="flex items-center space-x-2 bg-brand-green-200 text-brand-navy-900 px-4 py-2 rounded-full text-sm font-medium">
+            <div className="flex items-center space-x-2 bg-brand-green-200 text-brand-navy-900 px-4 py-2 pt-20 rounded-full text-sm font-medium">
               <Zap className="w-4 h-4 text-primary-green" />
-              <span>Ghana's Premier Youth Tech Bootcamp</span>
+              <span className="">Ghana's Premier Youth Tech Bootcamp</span>
             </div>
           </motion.div>
 
