@@ -1,14 +1,64 @@
 @import "tailwindcss";
 
-/* Minimal, valid Tailwind v4 setup. Keep globals lean and let utilities handle styling. */
-html { scroll-behavior: smooth; }
+/* Typography foundation for superior readability and visual hierarchy */
+html { 
+  scroll-behavior: smooth; 
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* Dark base: brand navy background with white text by default */
+/* Dark base: brand navy background with optimal contrast */
 body {
   background-color: #0b1220;
   color: #ffffff;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  letter-spacing: -0.01em;
 }
 
-/* Optional: narrow, teal scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: #22d3a6; border-radius: 4px; }
+/* Enhanced text selection with brand colors */
+::selection {
+  background-color: rgba(34, 211, 166, 0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: rgba(34, 211, 166, 0.3);
+  color: #ffffff;
+}
+
+/* Professional scrollbar with brand accent */
+::-webkit-scrollbar { 
+  width: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(11, 18, 32, 0.8);
+}
+
+::-webkit-scrollbar-thumb { 
+  background: linear-gradient(45deg, #22d3a6, #16b89a);
+  border-radius: 4px; 
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #16b89a, #0f9a86);
+}
+
+/* Improved focus states for accessibility */
+:focus-visible {
+  outline: 2px solid #22d3a6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:root{
+  /* define primary green token used in CSS/Tailwind classes as a fallback */
+  --primary-green: #22c55e; /* Tailwind green-500-ish; adjust if you prefer another hex */
+}
+
+/* Fallback utility classes when Tailwind custom token isn't available */
+.text-primary-green { color: var(--primary-green) !important; }
+.bg-primary-green { background-color: var(--primary-green) !important; }
+.border-primary-green { border-color: var(--primary-green) !important; }
