@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Users, Zap } from "lucide-react";
-import LightRays from "./LightRays";
+import LightRays from "./ui/LightRays";
 import TopNav from './TopNav';
-import BackgroundPatterns from './BackgroundPatterns';
+import BackgroundPatterns from './ui/BackgroundPatterns';
 
 const Hero = () => {
   const containerVariants = {

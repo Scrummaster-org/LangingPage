@@ -5,17 +5,26 @@ import Testimonials from "@/components/Testimonials";
 import Timeline from "@/components/Timeline";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import BackgroundPatterns from "@/components/ui/BackgroundPatterns";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <About />
-      <Features />
-      <Testimonials />
-      <Timeline />
-      <CTA />
-      <Footer />
+    <main className="relative min-h-screen overflow-hidden">
+      {/* Global Background Patterns */}
+      <div className="fixed inset-0 z-0">
+        <BackgroundPatterns />
+      </div>
+      
+      {/* All page content with higher z-index */}
+      <div className="relative z-10">
+        <Hero />
+        <About />
+        <Features />
+        <Testimonials />
+        <Timeline />
+        <CTA />
+        <Footer />
+      </div>
     </main>
   );
 }

@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Target, Heart, Globe, TrendingUp } from "lucide-react";
+import Cards from "./ui/Cards";
+
 
 const About = () => {
   const ref = useRef(null);
@@ -34,6 +36,8 @@ const About = () => {
 
   return (
   <section id="about" className="py-20 bg-brand-navy text-white" ref={ref}>
+ 
+    <Cards />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
