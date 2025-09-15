@@ -42,7 +42,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen bg-brand-navy text-white flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="home" className="min-h-screen bg-brand-navy text-white flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <TopNav />
       
       {/* Background Patterns */}

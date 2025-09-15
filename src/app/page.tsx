@@ -15,13 +15,15 @@ export default function Home() {
         <BackgroundPatterns />
       </div>
       
+      {/* Global dark overlay */}
+      <div className="fixed inset-0 bg-black/30 z-5"></div>
+      
       {/* All page content with higher z-index */}
       <div className="relative z-10">
         <Hero />
         <About />
         <Features />
         <Testimonials />
-        <Timeline />
         <CTA />
         <Footer />
       </div>
