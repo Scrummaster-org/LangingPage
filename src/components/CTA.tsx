@@ -1,6 +1,6 @@
 "use client";
 import Logos from "./ui/Logos";
-import { motion } from "framer-motion";
+import { motion, easeOut, easeInOut } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
@@ -35,7 +35,7 @@ const CTA = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: easeOut, // ✅ fixed here
       },
     },
   };
@@ -46,7 +46,7 @@ const CTA = () => {
       boxShadow: "0 20px 40px rgba(0, 255, 0, 0.3)",
       transition: {
         duration: 0.3,
-        ease: "easeOut",
+        ease: easeOut, // ✅ fixed here
       },
     },
     tap: {
@@ -63,7 +63,7 @@ const CTA = () => {
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: easeInOut, // ✅ fixed here
       },
     },
   };
@@ -179,12 +179,8 @@ const CTA = () => {
               <div className="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">
-                Email Us
-              </h3>
-              <p className="text-gray-200">
-                admissions@ghanatechbootcamp.com
-              </p>
+              <h3 className="text-lg font-semibold text-white mb-2">Email Us</h3>
+              <p className="text-gray-200">admissions@ghanatechbootcamp.com</p>
               <p className="text-sm text-gray-300 mt-2">Quick Response</p>
             </div>
 

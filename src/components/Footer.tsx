@@ -38,7 +38,6 @@ const Footer = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
       },
     },
   };
@@ -73,7 +72,7 @@ const Footer = () => {
     {
       city: "Accra",
       address: "East Legon, Accra",
-      phone: "+233 24 123 4567",
+      phone: "+233 27 484 7107",
       email: "accra@ghanatechbootcamp.com"
     },
     {

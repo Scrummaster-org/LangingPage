@@ -25,7 +25,6 @@ const Hero = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
       },
     },
   };
@@ -152,7 +151,7 @@ const Hero = () => {
             transition={{
               duration: 6,
               repeat: Infinity,
-              ease: "linear",
+
             }}
           />
           <motion.div
@@ -164,7 +163,6 @@ const Hero = () => {
             transition={{
               duration: 8,
               repeat: Infinity,
-              ease: "linear",
             }}
           />
         </motion.div>
