@@ -118,7 +118,7 @@ const Footer = () => {
               <div className="space-y-4">
                 <h4 className="text-lg font-semibold">Follow Us</h4>
                 <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => (
+                  {socialLinks.map((social) => (
                     <motion.a
                       key={social.label}
                       href={social.href}
@@ -138,7 +138,7 @@ const Footer = () => {
             <motion.div variants={slideUpVariants} className="space-y-6">
               <h4 className="text-lg font-semibold text-primary-green">Quick Links</h4>
               <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
+                {quickLinks.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
@@ -156,7 +156,7 @@ const Footer = () => {
             <motion.div variants={slideUpVariants} className="space-y-6">
               <h4 className="text-lg font-semibold text-primary-green">Programs</h4>
               <ul className="space-y-3">
-                {programs.map((program, index) => (
+                {programs.map((program) => (
                   <li key={program.name}>
                     <a
                       href={program.href}
@@ -206,7 +206,7 @@ const Footer = () => {
               {/* Campus Locations */}
               <div className="space-y-3">
                 <h5 className="text-white font-medium">Our Campuses</h5>
-                {campuses.map((campus, index) => (
+                {campuses.map((campus) => (
                   <div key={campus.city} className="text-sm">
                     <div className="flex items-center space-x-2">
                       <MapPin className="w-4 h-4 text-primary-green flex-shrink-0" />

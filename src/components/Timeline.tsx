@@ -134,7 +134,7 @@ const Timeline = () => {
             variants={containerVariants}
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
           >
-            {scheduleInfo.map((info, index) => (
+            {scheduleInfo.map((info) => (
               <motion.div
                 key={info.title}
                 variants={cardVariants}
